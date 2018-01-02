@@ -55,9 +55,8 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "Digilock_#{Rails.env}"
-  Rails.application.routes.default_url_options[:host] = 'https://digilock-code.herokuapp.com'
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { :host => "https://digilock-code.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "digilock-code.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
@@ -66,7 +65,8 @@ Rails.application.configure do
     user_name: ENV['EMAIL'],
     password: ENV['PASSWORD'],
     authentication: 'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    openssl_verify_mode: 'none'
   }
 
 
