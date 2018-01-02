@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
       login(@user)
       render "users/show"
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: ["Must be a valid email"], status: 422
     end
   end
 
