@@ -33,9 +33,9 @@ class SessionForm extends React.Component {
 
   formLink() {
     if (this.props.formType === 'login') {
-      return <Link to='/signup'>sign up instead</Link>
+      return <Link to='/signup'>sign up</Link>
     } else {
-      return <Link to='/login'>log in instead</Link>
+      return <Link to='/login'>login</Link>
     }
   }
 
@@ -54,15 +54,20 @@ class SessionForm extends React.Component {
   signupForm() {
     if (this.props.formType === 'signup') {
       return(
-        <label>Name:
-          <input type="text"
-            value={this.state.name}
-            onChange={this.update('name')}
-            />
-        </label>
+        <div>
+          <br/>
+          <label>Name:
+            <input type="text"
+              value={this.state.name}
+              onChange={this.update('name')}
+              />
+          </label>
+        </div>
       )
     } else {
-      null
+      return(
+        <br/>
+      )
     }
   }
 
@@ -70,14 +75,10 @@ class SessionForm extends React.Component {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          Welcome
+          Welcome!
           <br/>
-          Please {this.props.formType} or {this.formLink()}
-          {this.renderErrors()}
           <div>
-            <br/>
               {this.signupForm()}
-            <br/>
             <label>Email:
               <input type="text"
                 value={this.state.username}
@@ -95,6 +96,9 @@ class SessionForm extends React.Component {
               <input type="submit" value="Submit" />
           </div>
         </form>
+
+        Please {this.props.formType} or {this.formLink()} instead
+        {this.renderErrors()}
       </div>
     )
   }
