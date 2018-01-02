@@ -19,7 +19,7 @@ class Greeting extends React.Component {
   personalGreeting(currentUser, logout) {
     return(
       <div>
-        Hello {currentUser.username}!
+        Hello {currentUser.name}!
         <button onClick={logout}>Logout</button>
       </div>
     )

@@ -1,12 +1,14 @@
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :password_digest, :name, :session_token, presence: true
   validates :username, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
   validate :password_complexity
 
   attr_reader :password
 
+  before_create :confirmation_token
   after_initialize :ensure_session_token
+
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
@@ -34,6 +36,12 @@ class User < ApplicationRecord
     end
   end
 
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
   def reset_session_token!
     self.session_token = generate_session_token
     self.save
@@ -48,6 +56,12 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= generate_session_token
+  end
+
+  def confirmation_token
+    if self.confirm_token.nil?
+        self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 
 end

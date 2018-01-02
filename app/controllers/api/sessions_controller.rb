@@ -5,8 +5,14 @@ class Api::SessionsController < ApplicationController
       params[:user][:password]
     )
     if @user
-      login(@user)
-      render "api/users/show"
+      if @user.email_confirmed
+        login(@user)
+        render "api/users/show"
+      else
+        render(
+          json: ["Confirmation email sent! Please activate your account."], status: 401
+        )
+      end
     else
       render(
         json: ["Invalid email/password combination"],
