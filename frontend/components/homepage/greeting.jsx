@@ -1,9 +1,12 @@
 import React from 'react';
 import {Link, Redirect, withRouter} from 'react-router-dom';
+import UserProfileContainer from '../user/user_profile_container';
+import {ProtectedRoute} from '../../util/route_util';
 
 class Greeting extends React.Component {
   constructor(props) {
     super(props);
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   loginLinks() {
@@ -16,11 +19,17 @@ class Greeting extends React.Component {
     )
   }
 
+  handleLogout() {
+    this.props.logout()
+      .then(this.props.history.push('/login'))
+  }
+
   personalGreeting(currentUser, logout) {
     return(
       <div>
         Hello {currentUser.name}!
-        <button onClick={logout}>Logout</button>
+        <Link to={`/users/${this.props.currentUser.id}`}>User Profile</Link>
+        <button onClick={this.handleLogout}>Logout</button>
       </div>
     )
   }
@@ -29,9 +38,12 @@ class Greeting extends React.Component {
     return(
       <div>
         {this.props.currentUser ? this.personalGreeting(this.props.currentUser, this.props.logout) : this.loginLinks()}
+
       </div>
     )
   }
 }
 
 export default withRouter(Greeting)
+
+//         <UserProfileContainer />

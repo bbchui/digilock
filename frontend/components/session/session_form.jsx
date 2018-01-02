@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
             <br/>
               {this.signupForm()}
             <br/>
-            <label>Username:
+            <label>Email:
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}

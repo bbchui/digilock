@@ -4,6 +4,7 @@ import Root from './components/root';
 
 import configureStore from './store/store';
 import {login, signup, logout} from './actions/session_actions'
+import {updateUser, fetchUser} from './actions/user_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -16,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.store = store
+  window.updateUser = updateUser
+  window.fetchUser = fetchUser
 
   const root = document.getElementById('root');
 
