@@ -51,6 +51,21 @@ class SessionForm extends React.Component {
     );
   }
 
+  signupForm() {
+    if (this.props.formType === 'signup') {
+      return(
+        <label>Name:
+          <input type="text"
+            value={this.state.name}
+            onChange={this.update('name')}
+            />
+        </label>
+      )
+    } else {
+      null
+    }
+  }
+
   render() {
     return(
       <div>
@@ -61,13 +76,8 @@ class SessionForm extends React.Component {
           {this.renderErrors()}
           <div>
             <br/>
-              <label>Name:
-                <input type="text"
-                  value={this.state.name}
-                  onChange={this.update('name')}
-                  />
-              </label>
-              <br/>
+              {this.signupForm()}
+            <br/>
             <label>Username:
               <input type="text"
                 value={this.state.username}
