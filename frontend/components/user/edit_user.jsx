@@ -27,7 +27,7 @@ class EditUser extends React.Component {
   renderErrors() {
     if (this.props.errors !== undefined) {
       return(
-        <ul>
+        <ul className="errors">
           {this.props.errors.map((error, i) => (
             <li key={`error-${i}`}>
               {error}
@@ -43,7 +43,7 @@ class EditUser extends React.Component {
   render() {
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="changepassword">
           <label>New Password:
             <input type="password"
               value={this.state.password}

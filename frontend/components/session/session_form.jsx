@@ -39,9 +39,21 @@ class SessionForm extends React.Component {
     }
   }
 
+  formMessage() {
+    if (this.props.formType === 'login') {
+      return (
+        <p className="login">Please enter your Email and Password!</p>
+      )
+    } else {
+      return(
+        <p className="login">Please enter your information to create and new account!</p>
+      )
+    }
+  }
+
   renderErrors() {
     return(
-      <ul>
+      <ul className="errors">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
@@ -54,38 +66,35 @@ class SessionForm extends React.Component {
   signupForm() {
     if (this.props.formType === 'signup') {
       return(
-        <div>
-          <br/>
-          <label>Name:
-            <input type="text"
-              value={this.state.name}
-              onChange={this.update('name')}
-              />
-          </label>
-        </div>
+        <label>Name:
+          <input type="text"
+            value={this.state.name}
+            onChange={this.update('name')}
+            />
+        </label>
       )
     } else {
       return(
-        <br/>
+        null
       )
     }
   }
 
   render() {
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          Welcome!
+      <div className="sessionform">
+        <form onSubmit={this.handleSubmit} className="session">
           <br/>
-          <div>
-              {this.signupForm()}
+          {this.formMessage()}
+          <div className="inputs">
+            <br/>
+            {this.signupForm()}
             <label>Email:
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 />
             </label>
-            <br/>
               <label>Password:
                 <input type="password"
                   value={this.state.password}
@@ -97,7 +106,7 @@ class SessionForm extends React.Component {
           </div>
         </form>
 
-        Please {this.props.formType} or {this.formLink()} instead
+        <p>Please {this.props.formType} or {this.formLink()} instead</p>
         {this.renderErrors()}
       </div>
     )

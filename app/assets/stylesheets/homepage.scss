@@ -1,0 +1,79 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: normal;
+  min-width: 960px;
+}
+
+.loginlinks {
+  display: flex;
+  justify-content: center;
+  min-width: 960px;
+}
+
+.sessionform {
+  display: flex;
+  width: 960px;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.session {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+  padding: 25px;
+  width: 325px;
+  text-align: center;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personalgreeting {
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+}
+
+.userprofile {
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+}
+
+.changepassword {
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+}
+
+.errors {
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: red
+}

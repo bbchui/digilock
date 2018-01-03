@@ -20,14 +20,14 @@ class UserProfile extends React.Component {
   editUser() {
     if (this.props.currentUser && this.props.currentUser.id === parseInt(this.props.match.params.userId)) {
       return(
-        <Link to={`/users/${this.props.currentUser.id}/edit`}>Edit User</Link>
+        <Link to={`/users/${this.props.currentUser.id}/edit`}>Change Password</Link>
       )
     }
   }
 
   render() {
     return(
-      <div>
+      <div className="userprofile">
         {this.props.currentUser.name} Settings
         {this.editUser()}
       </div>

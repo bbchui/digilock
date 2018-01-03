@@ -11,7 +11,7 @@ const App = () => (
   <div>
     <header>
       <h1>Digilock Coding Challenge</h1>
-      <GreetingContainer />
+      <Route exact path='/' component={GreetingContainer} />
     </header>
 
     <AuthRoute path='/login' component={SessionFormContainer} />

@@ -11,7 +11,7 @@ class Greeting extends React.Component {
 
   loginLinks() {
     return(
-      <div>
+      <div className="loginlinks">
         <Link to="/login">Login</Link>
         &nbsp;or &nbsp;
         <Link to="/signup">Sign Up</Link>
@@ -26,8 +26,8 @@ class Greeting extends React.Component {
 
   personalGreeting(currentUser, logout) {
     return(
-      <div>
-        Hello {currentUser.name}!
+      <div className="personalgreeting">
+        <h3>Hello {currentUser.name}!</h3>
         <Link to={`/users/${this.props.currentUser.id}`}>User Profile</Link>
         <button onClick={this.handleLogout}>Logout</button>
       </div>
