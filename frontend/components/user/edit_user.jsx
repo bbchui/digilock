@@ -5,6 +5,7 @@ class EditUser extends React.Component {
     super(props)
     this.state = {password: '', userId: this.props.currentUser.id}
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
@@ -12,10 +13,15 @@ class EditUser extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log(this.props);
     e.preventDefault();
     this.setState({password: ''})
     this.props.updateUser(this.state)
-      .then((res) => this.props.history.push(`/users/${this.props.currentUser.id}`))
+      .then((res) => this.props.history.push(`/users/${this.props.match.params.userId}`))
+  }
+  handleCancel(e) {
+    e.preventDefault();
+    this.props.history.push('/')
   }
 
   update(field) {
@@ -50,7 +56,9 @@ class EditUser extends React.Component {
               onChange={this.update('password')}
               />
           </label>
-          <input type="submit" value="Submit" />
+          <button onClick={this.handleSubmit}>Submit</button>
+          <button onClick={this.handleCancel}>Cancel</button>
+
         </form>
         {this.renderErrors()}
       </div>

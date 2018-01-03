@@ -5,6 +5,7 @@ class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.editUser = this.editUser.bind(this);
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   componentDidMount() {
@@ -25,11 +26,20 @@ class UserProfile extends React.Component {
     }
   }
 
+  handleLogout() {
+    this.props.logout()
+      .then(this.props.history.push('/login'))
+  }
+
   render() {
+    let user = this.props.currentUser ? this.props.currentUser.name : null
+
     return(
       <div className="userprofile">
-        {this.props.currentUser.name} Settings
+        {user} Settings
         {this.editUser()}
+        <Link to='/'>Homepage</Link>
+        <button onClick={this.handleLogout}>Logout</button>
       </div>
     )
   }
